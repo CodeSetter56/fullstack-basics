@@ -2,7 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { removeTodo, setEditableTodo } from "../features/todo/todoSlice";
 
 function Todos() {
-  const {todos,editableTodo} = useSelector((state) => state); // Access the todos and editableTodo from the Redux store
+  const {todos,editableTodo} = useSelector((state) => state.todo); // Access the todos and editableTodo from the Redux store
   const dispatch = useDispatch();
 
   return (

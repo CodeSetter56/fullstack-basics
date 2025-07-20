@@ -7,7 +7,7 @@ function AddTodo() {
   const [title, setTitle] = useState("");
   //useDispatch to send data
   const dispatch = useDispatch();
-  const editableTodo = useSelector((state) => state.editableTodo);
+  const editableTodo = useSelector((state) => state.todo.editableTodo);
 
   //on initial render, if editableTodo is not null, set the title to the editableTodo's title
   useEffect(() => {

@@ -34,7 +34,7 @@ app.get("/", (req, res) => {
     //Map over the filenames to create an array of note objects
     const notes = files.map(filename => {
       const details = fs.readFileSync(`./notes/${filename}`, "utf-8");
-      const slug = filename
+      const slug = filename.replace(/\.txt$/, "");
       const title = filename.replace(/\.txt$/, '').replace(/-/g, ' ');
 
       return { title, details, slug };

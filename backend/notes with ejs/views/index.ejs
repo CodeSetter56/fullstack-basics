@@ -24,7 +24,7 @@
           ></textarea>
           <button
             type="submit"
-            class="px-4 py-2 text-lg bg-blue-600 hover:bg-blue-700 rounded-md"
+            class="px-4 py-2 text-lg bg-orange-600 hover:bg-blue-700 rounded-md"
           >
             Create Note
           </button>
@@ -37,11 +37,9 @@
         class="notes w-full mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
       >
         <% if (notes.length > 0) { %> <% notes.forEach(note => { %>
-        <div class="relative h-40 bg-orange-500 rounded-md p-3 overflow-hidden">
-          <h1 class="title font-bold text-2xl" name="title"><%= note.title  %></h1>
-          <p class="text-sm" name="details">
-            <%= note.details %>
-          </p>
+        <div class="relative h-40 bg-orange-600 rounded-md p-3 overflow-hidden">
+          <h1 class="title font-bold text-2xl"><%= note.title %></h1>
+          <pre class="text-sm"><%= note.details %></pre>
 
           <!-- fade effect for text going outside containder -->
           <div
@@ -49,14 +47,39 @@
           ></div>
 
           <div class="absolute bottom-3 right-3">
-            <a href="/notes/<%= note.slug %>" class="font-bold hover:underline">...read more</a>
+            <!-- notes is a prefix defined frome index.js for different routes -->
+            <a
+              href="/notes/file/<%= note.slug %>"
+              class="font-bold hover:underline"
+              >...read more</a
+            >
+          </div>
+          <div class="absolute bottom-3 left-3">
+            <a
+              href="/notes/edit/<%= note.slug %>"
+              class="font-bold text-black hover:underline"
+              >Edit</a
+            >
+          </div>
+          <div class="absolute bottom-3 left-12">
+            <form
+              action="/notes/delete/<%= note.slug %>"
+              method="POST"
+              class="inline"
+            >
+              <button
+                type="submit"
+                class="font-bold text-black hover:underline"
+              >
+                Delete
+              </button>
+            </form>
           </div>
         </div>
         <% }) %> <% } else { %>
         <h1 class="text-zinc-500">No notes yet.</h1>
         <% } %>
       </div>
-
     </div>
   </body>
 </html>

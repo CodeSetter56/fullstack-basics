@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Notes App</title>
+  </head>
+  <body class="bg-zinc-900 text-white">
+    <div class="main w-full min-h-screen p-10">
+      <div class="form">
+        <form action="/notes/create" method="POST">
+          <input
+            type="text"
+            name="title"
+            placeholder="Title"
+            class="block w-full p-2 mb-4 bg-zinc-800 border border-zinc-700 rounded-md"
+          />
+          <textarea
+            class="block w-full p-2 mb-4 bg-zinc-800 border border-zinc-700 rounded-md"
+            placeholder="Take a note..."
+            name="details"
+            rows="4"
+          ></textarea>
+          <button
+            type="submit"
+            class="px-4 py-2 text-lg bg-blue-600 hover:bg-blue-700 rounded-md"
+          >
+            Create Note
+          </button>
+        </form>
+      </div>
+
+      <h1 class="text-3xl font-bold mt-10 pb-2">Your Notes</h1>
+
+      <div
+        class="notes w-full mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"
+      >
+        <% if (notes.length > 0) { %> <% notes.forEach(note => { %>
+        <div class="relative h-40 bg-orange-500 rounded-md p-3 overflow-hidden">
+          <h1 class="title font-bold text-2xl" name="title"><%= note.title  %></h1>
+          <p class="text-sm" name="details">
+            <%= note.details %>
+          </p>
+
+          <!-- fade effect for text going outside containder -->
+          <div
+            class="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-orange-500 to-transparent"
+          ></div>
+
+          <div class="absolute bottom-3 right-3">
+            <a href="/notes/<%= note.slug %>" class="font-bold hover:underline">...read more</a>
+          </div>
+        </div>
+        <% }) %> <% } else { %>
+        <h1 class="text-zinc-500">No notes yet.</h1>
+        <% } %>
+      </div>
+
+    </div>
+  </body>
+</html>

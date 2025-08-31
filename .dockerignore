@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+vendor/
+
+# Database
+data/
+*.db
+*.sqlite
+
+# Logs
+*.log
+logs/
+
+# Environment variables
+.env
+.env.local
+
+# Build outputs
+dist/
+build/
+out/
+
+# Cache
+.cache/
+tmp/
+
+# IDE
+.vscode/settings.json
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Compiled files
+*.class
+*.pyc
+__pycache__/

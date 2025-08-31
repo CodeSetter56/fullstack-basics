@@ -1,0 +1,5 @@
+1. copy yml file
+2. docker-compose up -d : build, create, start, containers for services defined in yml file
+3. docker-compose down: stop containers
+4. docker-compose exec db psql -U codesetter -d codesetterDB : execute database codesetterDB
+5. \i /practice/file.sql : execute file

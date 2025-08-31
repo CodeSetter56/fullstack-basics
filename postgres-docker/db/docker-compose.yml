@@ -1,0 +1,29 @@
+services:
+  db:
+    image: postgres
+    restart: always
+    volumes:
+      - ./data/db/:/var/lib/postgresql/data
+      - ./practice:/practice
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: codesetter
+      POSTGRES_PASSWORD: codesetter
+      POSTGRES_DB: codesetterDB
+
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: codesetter@example.com
+      PGADMIN_DEFAULT_PASSWORD: codesetter
+    ports:
+      - "5050:80"
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+    depends_on:
+      - db
+
+volumes:
+  pgadmin-data:
